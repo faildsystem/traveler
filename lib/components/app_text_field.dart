@@ -50,6 +50,8 @@ class _AppTextFieldState extends State<AppTextField> {
       keyboardType: TextInputType.emailAddress,
       controller: widget.controller,
       cursorColor: const Color(0xFF1BBA85),
+      obscureText: widget.obscureText,
+      obscuringCharacter: '●',
       style: TextStyle(
         color: textColor,
         fontFamily: 'Poppins',
@@ -84,7 +86,6 @@ class _AppTextFieldState extends State<AppTextField> {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       ),
-      obscureText: widget.obscureText,
       validator: (value) {
         if (value!.isEmpty) {
           return 'Cannot be empty';
@@ -92,6 +93,14 @@ class _AppTextFieldState extends State<AppTextField> {
 
         if (widget.hintText == 'Password' && value.length < 6) {
           return 'Password must be at least 6 characters';
+        }
+        if (widget.hintText == 'Confirm Password' && value.length < 6) {
+          return 'Password must be at least 6 characters';
+        }
+
+        if (widget.hintText == 'Confirm Password' &&
+            value != widget.controller.text) {
+          return 'Password does not match';
         }
 
         if (widget.hintText == 'Email' && !value.contains('@gmail.com')) {

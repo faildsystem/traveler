@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:traveler/components/app_button.dart';
 import 'package:traveler/models/onboarding_model.dart';
 import 'package:traveler/screens/register_screen.dart';
 
@@ -107,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: SizedBox(
             width: double.infinity,
             height: 60,
-            child: ElevatedButton(
+            child: AppButton(
               onPressed: () {
                 if (index < onboardingData.length - 1) {
                   setState(() {
@@ -123,24 +124,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   );
                 }
               },
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(
-                  const Color(0xFF1BBA85),
-                ),
-                shape: WidgetStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
-              child: Text(
-                index < onboardingData.length - 1 ? 'Next' : 'Get Started',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              text: index < onboardingData.length - 1 ? 'Next' : 'Get Started',
+              borderRadius: 8,
+              enabled: true,
             ),
           ),
         ),
