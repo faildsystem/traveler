@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   bool obsecuredPassword = true;
 
-  bool isFormValid  = false;
+  bool isFormValid = false;
 
   @override
   void initState() {
@@ -35,7 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
       isFormValid = formKey.currentState?.validate() ?? false;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -215,6 +214,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-    ;
   }
 }

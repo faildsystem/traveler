@@ -18,14 +18,12 @@ List<OnboardingModel> onboardingData = [
     image: 'assets/images/destination 1.png',
   ),
   OnboardingModel(
-    title: 'Fly to Desitination',
+    title: 'Fly to Destination',
     description:
-        'Finally, get ready for the tour and go to \nyour desire destination.',
+        'Finally, get ready for the tour and go to \nyour desired destination.',
     image: 'assets/images/travelling (2) 1.png',
   ),
 ];
-
-int index = 0;
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -35,99 +33,112 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _pageController = PageController();
+  int _currentIndex = 0;
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragEnd: (details) {
-        if (details.primaryVelocity! < 0) {
-          setState(
-            () {
-              if (index < onboardingData.length - 1) {
-                index++;
-              }
-            },
-          );
-        } else {
-          setState(
-            () {
-              if (index > 0) {
-                index--;
-              }
-            },
-          );
-        }
-      },
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: const Color(0xFFF3F5F6),
+      appBar: AppBar(
         backgroundColor: const Color(0xFFF3F5F6),
-        appBar: AppBar(
-          backgroundColor: const Color(0xFFF3F5F6),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(9),
-          child: Center(
-            child: Column(
-              children: [
-                Image.asset(onboardingData[index].image),
-                const SizedBox(height: 40),
-                Text(
-                  onboardingData[index].title,
-                  style: const TextStyle(
-                    color: Color(0xFF121420),
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  textAlign: TextAlign.center,
-                  onboardingData[index].description,
-                  style: const TextStyle(
-                    color: Color(0xFFA5A7AC),
-                    fontSize: 16,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-                const SizedBox(height: 120),
-                AnimatedSmoothIndicator(
-                  activeIndex: index,
-                  count: onboardingData.length,
-                  effect: const ExpandingDotsEffect(
-                    activeDotColor: Color(0xFF1BBA85),
-                    dotColor: Color(0xFFC4C4C4),
-                    dotHeight: 13,
-                    dotWidth: 28,
-                    spacing: 5,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(20),
-          child: SizedBox(
-            width: double.infinity,
-            height: 60,
-            child: AppButton(
-              onPressed: () {
-                if (index < onboardingData.length - 1) {
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(9),
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: onboardingData.length,
+                onPageChanged: (index) {
                   setState(() {
-                    index++;
+                    _currentIndex = index;
                   });
-                } else {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegisterScreen(),
-                    ),
-                    (route) => false,
+                },
+                itemBuilder: (context, index) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(onboardingData[index].image),
+                      const SizedBox(height: 40),
+                      Text(
+                        onboardingData[index].title,
+                        style: const TextStyle(
+                          color: Color(0xFF121420),
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        onboardingData[index].description,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Color(0xFFA5A7AC),
+                          fontSize: 16,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ],
                   );
-                }
-              },
-              text: index < onboardingData.length - 1 ? 'Next' : 'Get Started',
-              borderRadius: 8,
-              enabled: true,
+                },
+              ),
             ),
+            const SizedBox(height: 40),
+            AnimatedSmoothIndicator(
+              activeIndex: _currentIndex,
+              count: onboardingData.length,
+              effect: const ExpandingDotsEffect(
+                activeDotColor: Color(0xFF1BBA85),
+                dotColor: Color(0xFFC4C4C4),
+                dotHeight: 13,
+                dotWidth: 28,
+                spacing: 5,
+              ),
+              onDotClicked: (index) {
+                _pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SizedBox(
+          width: double.infinity,
+          height: 60,
+          child: AppButton(
+            onPressed: () {
+              if (_currentIndex < onboardingData.length - 1) {
+                _pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              } else {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RegisterScreen(),
+                  ),
+                  (route) => false,
+                );
+              }
+            },
+            text: _currentIndex < onboardingData.length - 1 ? 'Next' : 'Get Started',
+            borderRadius: 8,
+            enabled: true,
           ),
         ),
       ),

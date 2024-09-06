@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traveler/screens/home_screen.dart';
 import 'package:traveler/screens/splash_screen.dart';
 
 void main() {

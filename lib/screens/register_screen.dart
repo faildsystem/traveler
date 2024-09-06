@@ -60,28 +60,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: SingleChildScrollView(
             child: Form(
               key: formKey,
               onChanged: validateForm,
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   AppTextField(
                     controller: nameController,
                     hintText: 'Full Name',
                     obscureText: false,
                     suffixIcon: null,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   AppTextField(
                     controller: emailController,
                     hintText: 'Email',
                     obscureText: false,
                     suffixIcon: null,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   AppTextField(
                     controller: passwordController,
                     hintText: 'Password',
@@ -97,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   AppTextField(
                     controller: confirmPasswordController,
                     hintText: 'Confirm Password',
@@ -113,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 35),
+                  const SizedBox(height: 25),
                   SizedBox(
                     width: double.infinity,
                     height: 57,
