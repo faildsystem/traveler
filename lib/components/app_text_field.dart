@@ -7,12 +7,21 @@ class AppTextField extends StatefulWidget {
     required this.hintText,
     required this.obscureText,
     this.suffixIcon,
+    this.labelText,
+    this.keyboardType = TextInputType.emailAddress,
+    this.radius = 15,
+    this.fillColor = const Color(0xFFFFFFFF),
   });
 
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
   final Widget? suffixIcon;
+  final String? labelText;
+  final TextInputType keyboardType;
+  final double radius;
+  final Color fillColor;
+
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -47,7 +56,7 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       focusNode: _focusNode,
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: widget.keyboardType,
       controller: widget.controller,
       cursorColor: const Color(0xFF1BBA85),
       obscureText: widget.obscureText,
@@ -60,9 +69,16 @@ class _AppTextFieldState extends State<AppTextField> {
       ),
       decoration: InputDecoration(
         filled: true,
-        fillColor: const Color(0xFFFFFFFF),
+        fillColor: widget.fillColor,
         suffixIcon: widget.suffixIcon,
         suffixIconColor: const Color(0xFFB3B2B2),
+        labelText: widget.labelText,
+        labelStyle: const TextStyle(
+          color: Colors.black,
+          fontFamily: 'Poppins',
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+        ),
         hintText: widget.hintText,
         hintStyle: const TextStyle(
           color: Color(0xFFB3B2B2),
@@ -71,27 +87,27 @@ class _AppTextFieldState extends State<AppTextField> {
           fontWeight: FontWeight.w500,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(widget.radius),
           borderSide: const BorderSide(
             color: Colors.transparent,
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(widget.radius),
           borderSide: const BorderSide(
             color: Colors.red,
             width: 1,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(widget.radius),
           borderSide: const BorderSide(
             color: Colors.red,
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(widget.radius),
           borderSide: const BorderSide(
             color: Color(0xFF1BBA85),
             width: 1,

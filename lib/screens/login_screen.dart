@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:traveler/components/app_button.dart';
 import 'package:traveler/components/app_text_field.dart';
 import 'package:traveler/screens/forgot_password_screen.dart';
-import 'package:traveler/screens/home_screen.dart';
+import 'package:traveler/screens/main_screen.dart';
 import 'package:traveler/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()),
+                                    builder: (context) => const MainScreen()),
                                 (value) => false);
                           } else {
                             AwesomeDialog(
