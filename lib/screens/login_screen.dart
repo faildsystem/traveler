@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: AppButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          if (emailController.text == 'admin@gmail.com' ||
+                          if (emailController.text == 'admin@gmail.com' &&
                               passwordController.text == 'admin1') {
                             Navigator.pushAndRemoveUntil(
                                 context,

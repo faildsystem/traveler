@@ -17,7 +17,7 @@ class ReserveScreen extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: 500,
-            child: Image.network(
+            child: Image.asset(
               hotel.image,
               fit: BoxFit.fill,
             ),

@@ -122,90 +122,53 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 205,
                           height: 250,
                           decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(trips[index].image),
+                              fit: BoxFit.cover,
+                            ),
                             borderRadius: BorderRadius.circular(24),
                           ),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(24),
-                                child: Image.network(
-                                  trips[index].image,
-                                  fit: BoxFit.cover,
-                                  width: 205,
-                                  height: 250,
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) {
-                                      return child;
-                                    } else {
-                                      return Center(
-                                        child: CircularProgressIndicator(
-                                          color: const Color(0xFF1BBA85),
-                                          value: loadingProgress
-                                                      .expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  (loadingProgress
-                                                      .expectedTotalBytes!)
-                                              : null,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                        child: Icon(Icons.error,
-                                            color: Colors.red));
-                                  },
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          trips[index].title,
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 5),
-                                        Text(
-                                          'Starting at \$${trips[index].minPrice}',
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFF1BBA85),
-                                        borderRadius: BorderRadius.circular(50),
+                                    Text(
+                                      trips[index].title,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900,
+                                        letterSpacing: 1.2,
                                       ),
-                                      child: Image.asset(
-                                        'assets/icons/heart.png',
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      'Starting at \$${trips[index].minPrice}',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF1BBA85),
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/heart.png',
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

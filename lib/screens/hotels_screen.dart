@@ -101,32 +101,9 @@ class _HotelsScreenState extends State<HotelsScreen> {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(13),
-              child: Image.network(
-                hotel.image,
+              image: DecorationImage(
+                image: AssetImage(hotel.image),
                 fit: BoxFit.cover,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: const Color(0xFF1BBA85),
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes!)
-                            : null,
-                      ),
-                    );
-                  }
-                },
-                errorBuilder: (context, error, stackTrace) {
-                  return const Center(
-                      child: Icon(Icons.error, color: Colors.red));
-                },
               ),
             ),
           ),
