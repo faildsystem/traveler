@@ -5,6 +5,10 @@ I made this App as a final project for MyCommunication training
 Preview:
     
 
+https://github.com/user-attachments/assets/abb67d4a-e6dc-415c-af1b-36a8566248d9
+
+
+
 Figma Design:
     https://www.figma.com/design/IaD8jilJ0x1Px0S8zSugIe/Travel-App-(Community)?node-id=0-1&t=6yc0SukUYUyw2gAb-1
 
