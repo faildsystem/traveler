@@ -2,6 +2,9 @@
 
 I made this App as a final project for MyCommunication training
 
+Preview:
+    
+
 Figma Design:
     https://www.figma.com/design/IaD8jilJ0x1Px0S8zSugIe/Travel-App-(Community)?node-id=0-1&t=6yc0SukUYUyw2gAb-1
 
