@@ -75,12 +75,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              _buildTile(icon: Icons.settings, title: 'Preferences'),
+              _buildTile(icon: Icons.settings_outlined, title: 'Preferences'),
               _buildTile(icon: Icons.lock_outline, title: 'Account Security'),
+              SizedBox(
+                width: 220,
+                child: LinearProgressIndicator(
+                  minHeight: 8,
+                  value: 0.4,
+                  borderRadius: BorderRadius.circular(25),
+                  backgroundColor: const Color(0xFFA5F4D8).withOpacity(0.58),
+                  valueColor:
+                      const AlwaysStoppedAnimation<Color>(Color(0xFF1BBA85)),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 65),
+                    child: Text(
+                      'Intermidiate',
+                      style: TextStyle(
+                        color: const Color(0xFF191C32).withOpacity(0.4),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               _buildTile(icon: Icons.help_outline, title: 'Help'),
-              _buildTile(icon: Icons.star_border, title: 'Rate Us'),
               _buildTile(
-                icon: Icons.logout,
+                icon: Icons.login,
                 title: 'Logout',
                 onPresseed: () {
                   Navigator.pushAndRemoveUntil(

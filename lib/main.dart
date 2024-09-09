@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traveler/screens/main_screen.dart';
 import 'package:traveler/screens/splash_screen.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: MainScreen(),
+        body: SplashScreen(),
       ),
     );
   }
