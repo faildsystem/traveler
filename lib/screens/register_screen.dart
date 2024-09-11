@@ -1,10 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:traveler/components/app_button.dart';
 import 'package:traveler/components/app_text_field.dart';
+import 'package:traveler/components/or_section.dart';
 import 'package:traveler/screens/congrats_screen.dart';
-import 'package:traveler/screens/login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -15,7 +14,6 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool obsecuredPassword = true;
-  bool obsecuredConfirmPassword = true;
 
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -101,14 +99,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   AppTextField(
                     controller: confirmPasswordController,
                     hintText: 'Confirm Password',
-                    obscureText: obsecuredConfirmPassword,
+                    obscureText: obsecuredPassword,
                     suffixIcon: GestureDetector(
-                      child: obsecuredConfirmPassword
+                      child: obsecuredPassword
                           ? const Icon(Icons.visibility)
                           : const Icon(Icons.visibility_off),
                       onTap: () {
                         setState(() {
-                          obsecuredConfirmPassword = !obsecuredConfirmPassword;
+                          obsecuredPassword = !obsecuredPassword;
                         });
                       },
                     ),
@@ -145,69 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  const Text(
-                    'Or',
-                    style: TextStyle(
-                      color: Color(0xFFB3B2B2),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(FontAwesomeIcons.facebookF),
-                        color: Colors.blue,
-                      ),
-                      const SizedBox(width: 5),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(FontAwesomeIcons.google),
-                        color: Colors.red,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 35),
-                  const Text(
-                    'Already Have An Account?',
-                    style: TextStyle(
-                      color: Color(0xFF000000),
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        color: Color(0xFF1BBA85),
-                        fontSize: 14,
-                        letterSpacing: 8,
-                        fontWeight: FontWeight.normal,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 25,
-                    child: Divider(
-                      color: Color(0xFF1BBA85),
-                      thickness: 1,
-                    ),
-                  ),
+                  const OrSection(isLogin: false),
                 ],
               ),
             ),
@@ -217,3 +153,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
+
+

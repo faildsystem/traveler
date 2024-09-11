@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:traveler/components/profile_info.dart';
 import 'package:traveler/screens/currency_converter_screen.dart';
 import 'package:traveler/screens/main_screen.dart';
 import 'package:traveler/screens/login_screen.dart';
 import 'package:traveler/screens/profile_screen.dart';
+import 'package:traveler/screens/settings_screen.dart';
 
 class DropMenu extends StatelessWidget {
   const DropMenu({
@@ -15,27 +17,20 @@ class DropMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 250,
       backgroundColor: const Color(0xFFF3F5F6),
       child: Column(
         children: [
-          const UserAccountsDrawerHeader(
-            accountName: Text('Matt Revas', style: TextStyle(fontSize: 20)),
-            accountEmail: Text('ID : 56456941'),
-            currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child: Image(
-                  image: AssetImage('assets/images/profile.jpg'),
-                  width: 105,
-                  height: 112,
-                  fit: BoxFit.cover,
-                ),
+          Container(
+            width: 350,
+            height: 200,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg2.png'),
+                fit: BoxFit.cover,
               ),
             ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/bg1.png'),
-                  fit: BoxFit.cover),
-            ),
+            child: const ProfileInfo(),
           ),
           ListTile(
             title: const Text('Home'),
@@ -76,7 +71,12 @@ class DropMenu extends StatelessWidget {
           ListTile(
             title: const Text('Settings'),
             leading: const Icon(Icons.settings),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
+              );
+            },
           ),
           ListTile(
             title: const Text('Logout'),

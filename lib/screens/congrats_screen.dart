@@ -13,7 +13,7 @@ class CongratsScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 120),
+              const SizedBox(height: 120),
               Image.asset(
                 'assets/images/Done.png',
                 width: 200,

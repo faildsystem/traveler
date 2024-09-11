@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traveler/components/profile_info.dart';
 import 'package:traveler/screens/login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -35,28 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/images/profile.jpg'),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Matt Revas',
-                style: const TextStyle(
-                  color: Color(0xFF000000),
-                  fontSize: 26,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                'ID : 56456941',
-                style: TextStyle(
-                  color: const Color(0xFF191C32).withOpacity(0.4),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              const ProfileInfo(),
               const SizedBox(height: 20),
               Container(
                 width: 250,

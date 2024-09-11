@@ -1,11 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:traveler/components/app_button.dart';
 import 'package:traveler/components/app_text_field.dart';
+import 'package:traveler/components/or_section.dart';
 import 'package:traveler/screens/forgot_password_screen.dart';
 import 'package:traveler/screens/main_screen.dart';
-import 'package:traveler/screens/register_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -50,7 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.black,
               fontSize: 40,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Poppins',
             ),
           ),
         ),
@@ -144,69 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  const Text(
-                    'Or',
-                    style: TextStyle(
-                      color: Color(0xFFB3B2B2),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(FontAwesomeIcons.facebookF),
-                        color: Colors.blue,
-                      ),
-                      const SizedBox(width: 5),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(FontAwesomeIcons.google),
-                        color: Colors.red,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 35),
-                  const Text(
-                    'Don\'t Have An Account?',
-                    style: TextStyle(
-                      color: Color(0xFF000000),
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'REGISTER',
-                      style: TextStyle(
-                        color: Color(0xFF1BBA85),
-                        fontSize: 14,
-                        letterSpacing: 8,
-                        fontWeight: FontWeight.normal,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 25,
-                    child: Divider(
-                      color: Color(0xFF1BBA85),
-                      thickness: 1,
-                    ),
-                  ),
+                  const OrSection(isLogin: true),
                 ],
               ),
             ),

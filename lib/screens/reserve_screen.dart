@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:traveler/components/app_button.dart';
 import 'package:traveler/models/hotel_model.dart';
@@ -16,14 +14,14 @@ class ReserveScreen extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            height: 500,
+            height: 550,
             child: Image.asset(
               hotel.image,
               fit: BoxFit.fill,
             ),
           ),
           _arrowButton(context),
-          scroll(),
+          _scroll(),
         ],
       ),
     );
@@ -44,7 +42,7 @@ class ReserveScreen extends StatelessWidget {
     );
   }
 
-  scroll() {
+  _scroll() {
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
       maxChildSize: 1.0,
@@ -286,7 +284,7 @@ class ReserveScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "${hotel.price}",
+                      hotel.price,
                       style: const TextStyle(
                         color: Color(0xFF172B4D),
                         fontSize: 30,

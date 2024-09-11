@@ -4,26 +4,7 @@ import 'package:traveler/components/app_button.dart';
 import 'package:traveler/models/onboarding_model.dart';
 import 'package:traveler/screens/register_screen.dart';
 
-List<OnboardingModel> onboardingData = [
-  OnboardingModel(
-    title: 'Explore Destinations',
-    description:
-        'Discover the places for your trip in the \nworld and feel great.',
-    image: 'assets/images/mountain 1.png',
-  ),
-  OnboardingModel(
-    title: 'Choose a Destination',
-    description:
-        'Select a place for your trip easily and know \nthe exact cost of the tour.',
-    image: 'assets/images/destination 1.png',
-  ),
-  OnboardingModel(
-    title: 'Fly to Destination',
-    description:
-        'Finally, get ready for the tour and go to \nyour desired destination.',
-    image: 'assets/images/travelling (2) 1.png',
-  ),
-];
+
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -48,7 +29,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: const Color(0xFFF3F5F6),
       appBar: AppBar(
         backgroundColor: const Color(0xFFF3F5F6),
-        elevation: 0,
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RegisterScreen(),
+                ),
+                (route) => false,
+              );
+            },
+            child: const Text(
+              'Skip',
+              style: TextStyle(
+                color: Color(0xFF1BBA85),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(9),

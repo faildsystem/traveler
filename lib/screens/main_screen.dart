@@ -74,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
             },
             haptic: true,
             tabBorderRadius: 12,
-            duration: const Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 300),
             gap: 8,
             color: const Color(0xFFA5A7AC),
             activeColor: const Color(0xFFFFFFFF),
@@ -102,36 +102,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  BottomNavigationBar navBar() {
-    return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.swap_horiz),
-          label: 'Currency Converter',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
-          label: 'notifications',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
-      currentIndex: _currentIndex,
-      selectedItemColor: Colors.amber[800],
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
     );
   }
 }

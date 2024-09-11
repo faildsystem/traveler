@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:traveler/components/app_text_field.dart';
 import 'package:traveler/models/hotel_model.dart';
 import 'package:traveler/screens/reserve_screen.dart';
